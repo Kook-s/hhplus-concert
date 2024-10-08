@@ -23,11 +23,11 @@
 - 자료들을 리드미에 작성 후 PR링크 제출 ( 기본 패키지 구조, 서버 Configuration 등 )
 ---
 
-### **`STEP 05`******
+### **`STEP 05`**
 
 ### **`[콘서트 예약 서비스]`** : [Milestone](https://github.com/Kook-s/hhplus-concert/milestones)
 
-# 시퀀스다이어그램
+### **`시퀀스다이어그램`**
 
 ## 대기열 API
 ```mermaid
@@ -67,7 +67,7 @@ sequenceDiagram
   end
 ```
 
-## 좌석 예약 요청 API 시퀀스 다이어그램
+# 좌석 예약 요청 API 시퀀스 다이어그램
 
 ```mermaid
 sequenceDiagram
