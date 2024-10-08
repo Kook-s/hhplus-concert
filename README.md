@@ -4,7 +4,7 @@
 
 [맛집 검색 서비스]
 
-✅ [콘서트 예약 서비스]
+[콘서트 예약 서비스] ✅
 
 
 ### **`STEP 05`**
@@ -21,15 +21,50 @@
 - ERD 설계 자료 제출
 - API 명세 및 Mock API 작성
 - 자료들을 리드미에 작성 후 PR링크 제출 ( 기본 패키지 구조, 서버 Configuration 등 )
+-
+<br>
+
 ---
 
-### **`STEP 05`******
+<br>
 
-### **`[콘서트 예약 서비스]`** : [Milestone](https://github.com/Kook-s/hhplus-concert/milestones)
+## **`STEP 05`**
 
-# 시퀀스다이어그램
+<br>
 
-## 대기열 API
+### **`콘서트 예약 서비스`** : [Milestone](https://github.com/Kook-s/hhplus-concert/milestones)
+
+### **`요구사항 분석`**
+
+
+### **유저 대기열 토큰 기능**
+- **대기열 등록**: 유저 정보를 받아 대기열에 등록.
+- **대기열 순번 할당**: 대기 순서를 계산하고, 대기 시간 정보를 생성.
+- **대기열 토큰 발급**: 유저의 UUID와 대기열 정보를 포함한 토큰을 발급.
+
+### **예약 가능 날짜 / 좌석 조회 API**
+- **예약 가능 날짜 조회**: 유저의 토큰을 검증하고, 예약 가능한 날짜 목록을 반환.
+- **예약 가능 좌석 조회**: 특정 날짜의 예약 가능한 좌석 목록을 조회.
+
+### **좌석 예약 요청 API**
+- **좌석 예약 요청**: 유저의 토큰을 검증하고, 좌석 예약 요청을 처리.
+- **임시 예약 처리**: 좌석을 5분 동안 임시로 예약하고, 이후 예약이 자동 해제됨.
+
+### **잔액 충전 / 조회 API**
+- **잔액 충전**: 유저 정보와 충전 금액을 받아 잔액을 충전.
+- **잔액 조회**: 유저 정보를 받아 해당 유저의 잔액을 조회.
+
+### **결제 API**
+- **결제 요청**: 유저의 토큰을 검증하고, 결제 금액을 처리.
+- **좌석 소유권 확정**: 결제가 성공하면 좌석의 소유권을 유저에게 부여.
+- **잔액 차감**: 결제 시 유저의 잔액을 차감하고, 결제가 실패하면 잔액 부족 알림.
+- **대기열 토큰 만료**: 결제 완료 후 대기열 토큰을 만료 처리.
+
+
+
+### **`시퀀스다이어그램`** :
+
+### 대기열 API
 ```mermaid
 sequenceDiagram
   participant User as 사용자
@@ -43,7 +78,7 @@ sequenceDiagram
 
 ```
 
-## 예약 가능 날짜 / 좌석 API 시퀀스 다이어그램
+### 예약 가능 날짜/좌석 API 시퀀스 다이어그램
 
 ```mermaid
 sequenceDiagram
@@ -67,7 +102,7 @@ sequenceDiagram
   end
 ```
 
-## 좌석 예약 요청 API 시퀀스 다이어그램
+### 좌석 예약 요청 API 
 
 ```mermaid
 sequenceDiagram
@@ -95,7 +130,7 @@ sequenceDiagram
 
 ```
 
-## 잔액 충전 / 조회 API 시퀀스 다이어그램
+### 잔액 충전/조회 API 
 ```mermaid
 sequenceDiagram
     participant User as 사용자
@@ -112,7 +147,7 @@ sequenceDiagram
 
 ```
 
-## 결제 API 시퀀스 다이어그램
+### 결제 API 
 ```mermaid
 sequenceDiagram
     participant User as 사용자
@@ -139,7 +174,7 @@ sequenceDiagram
     end
 ```
 
-## 콘서트 예약 서비스(전체)
+### 콘서트 예약 서비스(전체)
 ```mermaid
 sequenceDiagram
   participant User as 사용자
