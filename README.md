@@ -259,4 +259,4 @@ sequenceDiagram
 
 ### **`ERD`**
 
-![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/week03/document/concert_ERD.png?raw=true)
