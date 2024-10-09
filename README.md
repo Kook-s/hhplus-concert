@@ -34,7 +34,9 @@
 
 ### **`시퀀스다이어그램`**
 
-### **`콘서트 예약 서비스`** : [Milestone](https://github.com/Kook-s/hhplus-concert/milestones)
+### **`콘서트 예약 서비스`** 
+### [Milestone](https://github.com/Kook-s/hhplus-concert/milestones)
+### [Milestone Roadmap](https://github.com/users/Kook-s/projects/4)
 
 ### **`요구사항 분석`**
 
@@ -250,3 +252,11 @@ sequenceDiagram
     Token-->>User: 토큰 유효하지 않음 응답
   end
 ```
+
+## **`STEP 06`**
+
+<br>
+
+### **`ERD`**
+
+![image]()
