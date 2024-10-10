@@ -28,17 +28,17 @@
 
 <br>
 
-## **`STEP 05`**
+## STEP 05
 
 <br>
 
-### **`시퀀스다이어그램`**
+## 시퀀스다이어그램
 
-### **`콘서트 예약 서비스`** 
+## 콘서트 예약 서비스 
 ### [Milestone](https://github.com/Kook-s/hhplus-concert/milestones)
 ### [Milestone Roadmap](https://github.com/users/Kook-s/projects/4)
 
-### **`요구사항 분석`**
+## 요구사항 분석
 
 
 ### **유저 대기열 토큰 기능**
