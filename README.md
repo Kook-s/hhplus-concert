@@ -230,26 +230,26 @@
 ## Mock API
 
 ### 1. 토큰 발급 API
-## ![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/step06/document/mockAPI/issue.png?raw=true)
 
 ### 2. 대기열 상태 확인 API
-## ![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/step06/document/mockAPI/status_userId.png?raw=true)
 
 ### 3. 예약 가능한 날짜 목록 조회 API
-## ![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/step06/document/mockAPI/available-dates.png?raw=true)
 
 ### 4. 특정 날짜 좌석 목록 조회 API
-## ![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/step06/document/mockAPI/avaliable-seats.png?raw=true)
 
 ### 5. 좌석 예약 요청 API
-## ![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/step06/document/mockAPI/reserve.png?raw=true)
 
 ### 6. 유저 잔액 조회 API
-## ![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/step06/document/mockAPI/userId_balance.png?raw=true)
 
 ### 7. 유저 잔액 충전 API
-## ![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/step06/document/mockAPI/userId_charge.png?raw=true)
 
 ### 8. 결제 처리 API
-## ![image]()
+## ![image](https://github.com/Kook-s/hhplus-concert/blob/step06/document/mockAPI/process.png?raw=true)
 
