@@ -252,11 +252,3 @@ sequenceDiagram
     Token-->>User: 토큰 유효하지 않음 응답
   end
 ```
-
-## **`STEP 06`**
-
-<br>
-
-### **`ERD`**
-
-## ![image](https://github.com/Kook-s/hhplus-concert/blob/week03/document/concert_ERD.png?raw=true)
