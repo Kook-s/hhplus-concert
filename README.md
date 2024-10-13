@@ -26,7 +26,12 @@
 ---
 
 ## **`STEP 05`**
-### [Milestone](hhplus-concert/document/concert_step_05.md)
+### [step05](https://github.com/Kook-s/hhplus-concert/blob/master/document/concert_step_05.md)
+- 마일스톤, 로드맵
+- 시퀀스다이어그램
 
 ## **`STEP 06`**
 ### [Milestone](https://github.com/Kook-s/hhplus-concert/milestones)
+- ERD
+- Mock API
+- API 명세
