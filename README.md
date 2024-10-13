@@ -26,6 +26,7 @@
 ---
 
 ## **`STEP 05`**
-
+### [Milestone](hhplus-concert/document/concert_step_05.md)
 
 ## **`STEP 06`**
+### [Milestone](https://github.com/Kook-s/hhplus-concert/milestones)
