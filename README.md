@@ -31,7 +31,7 @@
 - 시퀀스다이어그램
 
 ## **`STEP 06`**
-### [Ste06](https://github.com/Kook-s/hhplus-concert/blob/master/document/concert_step06.md)
+### [Step06](https://github.com/Kook-s/hhplus-concert/blob/master/document/concert_step06.md)
 - ERD
 - Mock API
 - API 명세
