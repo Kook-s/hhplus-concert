@@ -1,7 +1,7 @@
 package hhplus.concert.infra.user;
 
-import hhplus.concert.infra.user.entity.UserPointEntity;
+import hhplus.concert.infra.user.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserJpaRepository extends JpaRepository<UserPointEntity, Long> {
+public interface UserJpaRepository extends JpaRepository<UserEntity, Long> {
 }

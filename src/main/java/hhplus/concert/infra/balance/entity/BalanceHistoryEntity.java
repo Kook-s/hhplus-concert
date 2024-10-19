@@ -1,4 +1,4 @@
-package hhplus.concert.infra.user.entity;
+package hhplus.concert.infra.balance.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "POINT_HISTORY")
-public class PointHistoryEntity {
+@Table(name = "BALANCE_HISTORY")
+public class BalanceHistoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

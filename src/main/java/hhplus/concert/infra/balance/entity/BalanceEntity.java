@@ -1,4 +1,4 @@
-package hhplus.concert.infra.user.entity;
+package hhplus.concert.infra.balance.entity;
 
 
 import jakarta.persistence.*;
@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name="USER_POINT")
-public class UserPointEntity {
+@Table(name="Balance")
+public class BalanceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

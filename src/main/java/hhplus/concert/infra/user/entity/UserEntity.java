@@ -1,26 +1,23 @@
 package hhplus.concert.infra.user.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Data
-@Table(name = "USER")
+@Entity(name = "USERS")
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
     @Column(name = "NAME")
     private String name;
-
-    @CreatedDate
-    @Column(name = "CREATE_AT")
-    private LocalDateTime createAt;
-
 }
