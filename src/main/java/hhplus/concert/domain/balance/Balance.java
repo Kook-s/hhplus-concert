@@ -1,6 +1,8 @@
 
 package hhplus.concert.domain.balance;
 
+import hhplus.concert.support.exception.CustomException;
+import hhplus.concert.support.exception.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,39 +10,34 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Builder
-@Data
-@AllArgsConstructor
-public class Balance {
+public record Balance(
+        Long id,
+        Long userId,
+        Long amount,
+        LocalDateTime lastUpdateAt
+) {
 
-    private Long id;
-    private Long userId;
-    private int point;
-    public LocalDateTime createdAt;
-    public LocalDateTime updatedAt;
-
-    public Long version;
-
-    public Balance(Long id, Long userId, int point) {
-        this.id = id;
-        this.userId = userId;
-        this.point = point;
+    public Balance charge(Long amount) {
+        return Balance.builder()
+                .id(this.id)
+                .userId(this.userId)
+                .amount(this.amount)
+                .lastUpdateAt(LocalDateTime.now())
+                .build();
     }
 
-    public Balance(Long id, Long userId, int point, long version) {
-        this.id = id;
-        this.userId = userId;
-        this.point = point;
-        this.version = version;
-    }
-
-    public void plusPoint(int addPoint) {
-        this.point += addPoint;
-    }
-
-    public void minusPoint(int minPoint) {
-        if (this.point - minPoint < 0) {
-
+    public Balance useeBalance(int useAmount) {
+        if(this.amount < useAmount) {
+            throw new CustomException(ErrorCode.PAYMENT_FAILED_AMOUNT);
         }
-        this.point = this.point - minPoint;
+
+        return Balance.builder()
+                .id(id)
+                .userId(userId)
+                .amount(amount - useAmount)
+                .lastUpdateAt(LocalDateTime.now())
+                .build();
     }
+
+
 }

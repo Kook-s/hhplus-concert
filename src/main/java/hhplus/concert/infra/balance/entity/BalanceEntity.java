@@ -1,38 +1,54 @@
 package hhplus.concert.infra.balance.entity;
 
 
+import hhplus.concert.domain.balance.Balance;
+import hhplus.concert.infra.user.entity.UserEntity;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Data
-@Table(name="Balance")
+@Entity(name = "BALANCE")
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BalanceEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private Long id;
 
-    @Column(name="USER_ID")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private UserEntity user;
 
-    @Column(name="POINT")
-    private int point;
+    @Column(name="AMOUNT")
+    private Long amount;
 
     @CreatedDate
-    @Column(name="CREATED_AT")
-    private LocalDateTime createdAt;
+    @Column(name="LAST_UPDATE_AT")
+    private LocalDateTime lastUpdateAt;
 
-    @LastModifiedDate
-    @Column(name="UPDATED_AT")
-    private LocalDateTime updatedAt;
+    public static Balance of(BalanceEntity entity) {
 
-    @Version
-    private long version;
+        return Balance.builder()
+                .id(entity.getId())
+                .userId(entity.getUser().getId())
+                .amount(entity.getAmount())
+                .lastUpdateAt(entity.getLastUpdateAt())
+                .build();
+    }
 
+    public static BalanceEntity from(Balance balance) {
+        return BalanceEntity.builder()
+                .id(balance.id())
+                .user(UserEntity.builder().id(balance.userId()).build())
+                .amount(balance.amount())
+                .lastUpdateAt(balance.lastUpdateAt())
+                .build();
+    }
 }

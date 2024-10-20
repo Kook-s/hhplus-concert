@@ -5,8 +5,8 @@ import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 
-public interface BalanceJpaRepository extends JpaRepository<BalanceEntity, Long> {
+import java.util.Optional;
 
-    @Lock(LockModeType.OPTIMISTIC)
-    BalanceEntity findByUserId(long userId);
+public interface BalanceJpaRepository extends JpaRepository<BalanceEntity, Long> {
+    Optional<BalanceEntity> findByUserId(Long userId);
 }
