@@ -1,6 +1,5 @@
 package hhplus.concert.domain.payment;
 
-import hhplus.concert.domain.concert.SeatReservation;
 import lombok.*;
 
 import java.time.LocalDateTime;

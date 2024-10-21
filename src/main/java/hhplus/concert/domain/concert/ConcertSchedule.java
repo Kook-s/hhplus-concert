@@ -1,17 +1,25 @@
 package hhplus.concert.domain.concert;
 
-import lombok.AllArgsConstructor;
+import hhplus.concert.support.exception.CustomException;
+import hhplus.concert.support.exception.ErrorCode;
 import lombok.Builder;
-import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
-@Data
-@AllArgsConstructor
-public class ConcertSchedule {
-    private Long id;
-    private Long concertId;
-    private LocalDateTime openDate;
+public record ConcertSchedule(
+        Long id,
+        Long concertId,
+        LocalDateTime reservationAt,
+        LocalDateTime deadLine,
+        LocalDateTime concertAt
+) {
+    public void checkStatus() {
+        if(reservationAt.isAfter(LocalDateTime.now())) {
+            throw new CustomException(ErrorCode.INTERNAL_SERVER_ERROR);
+        }
+        if(deadLine().isBefore(LocalDateTime.now())) {
+            throw new CustomException(ErrorCode.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

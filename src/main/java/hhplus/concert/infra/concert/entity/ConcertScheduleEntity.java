@@ -1,34 +1,52 @@
 package hhplus.concert.infra.concert.entity;
 
+import hhplus.concert.domain.concert.ConcertSchedule;
 import jakarta.persistence.*;
-import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Data
-@Table(name="CONCERT_SCHEDULE")
+@Entity(name="CONCERT_SCHEDULE")
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ConcertScheduleEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private Long id;
 
-    @Column(name="CONCERT_ID")
-    private Long concertId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="CONCERT_ID", nullable = false)
+    private ConcertEntity concert;
 
-    @Column(name="OPEN_DATE")
-    private LocalDateTime openDate;
+    @Column(name="RESERVATION_AT")
+    private LocalDateTime reservationAt;
 
-    @CreatedDate
-    @Column(name="CREATED_AT")
-    private LocalDateTime createdAt;
+    @Column(name="DEAD_LINE")
+    private LocalDateTime deadLine;
 
-    @LastModifiedDate
-    @Column(name="UPDATED_AT")
-    private LocalDateTime updatedAt;
-    
+    @Column(name="CONCERT_AT")
+    private LocalDateTime concertAt;
+
+    public static ConcertSchedule of(ConcertScheduleEntity entity) {
+        return ConcertSchedule.builder()
+                .id(entity.id)
+                .concertId(entity.getConcert().getId())
+                .reservationAt(entity.reservationAt)
+                .deadLine(entity.deadLine)
+                .concertAt(entity.concertAt)
+                .build();
+    }
+
+    public static ConcertScheduleEntity from(ConcertSchedule schedule) {
+        return ConcertScheduleEntity.builder()
+                .concert(ConcertEntity.builder().id(schedule.concertId()).build())
+                .reservationAt(schedule.reservationAt())
+                .deadLine(schedule.deadLine())
+                .concertAt(schedule.concertAt())
+                .build();
+    }
 }
