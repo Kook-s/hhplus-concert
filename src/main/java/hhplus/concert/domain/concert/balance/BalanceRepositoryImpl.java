@@ -1,8 +1,8 @@
-package hhplus.concert.infra.balance;
+package hhplus.concert.domain.concert.balance;
 
 import hhplus.concert.domain.balance.Balance;
 import hhplus.concert.domain.balance.BalanceRepository;
-import hhplus.concert.infra.balance.entity.BalanceEntity;
+import hhplus.concert.domain.concert.balance.entity.BalanceEntity;
 import hhplus.concert.support.exception.CustomException;
 import hhplus.concert.support.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;

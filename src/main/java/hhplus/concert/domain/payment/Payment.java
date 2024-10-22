@@ -1,46 +1,25 @@
 package hhplus.concert.domain.payment;
 
-import hhplus.concert.domain.concert.SeatReservation;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Payment {
-
-    @Getter
-    private Long id;
-
-    @Getter
-    private Long userId;
-
-    @Getter
-    private Long concertId;
-
-    @Getter
-    private String concertTitle;
-
-    @Getter
-    private Long scheduleId;
-
-    @Getter
-    private Long seatId;
-
-    @Getter
-    private int price;
-
-    @Getter
-    private String status;
-
-    @Getter
-    public LocalDateTime createdAt;
-
-    @Getter
-    public LocalDateTime updatedAt;
-
-    @Getter
-    private SeatReservation seatReservation;
+public record Payment (
+    Long id,
+    Long reservationId,
+    Long userId,
+    int amount,
+    LocalDateTime paymentAt
+) {
+    public static Payment create(Long reservationId, Long userId, int amount) {
+        return Payment.builder()
+                .reservationId(reservationId)
+                .userId(userId)
+                .amount(amount)
+                .paymentAt(LocalDateTime.now())
+                .build();
+    }
 }

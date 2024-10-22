@@ -1,6 +1,7 @@
 package hhplus.concert.infra.queue.entity;
 
 import hhplus.concert.domain.queue.Queue;
+import hhplus.concert.infra.user.entity.UserEntity;
 import hhplus.concert.support.type.QueueStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,8 +21,9 @@ public class QueueEntity {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "USER_ID")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private UserEntity user;
 
     @Column(name = "TOKEN")
     private String token;
@@ -42,7 +44,7 @@ public class QueueEntity {
     public static Queue of(QueueEntity entity) {
         return Queue.builder()
                 .id(entity.getId())
-                .userId(entity.getUserId())
+                .userId(entity.getUser().getId())
                 .token(entity.getToken())
                 .status(entity.getStatus())
                 .createdAt(entity.getCreatedAt())
@@ -51,10 +53,9 @@ public class QueueEntity {
                 .build();
     }
 
-    public static QueueEntity from(Queue queue) {
+    public QueueEntity from(Queue queue) {
         return QueueEntity.builder()
-                .id(queue.id())
-                .userId(queue.userId())
+                .user(UserEntity.builder().id(queue.userId()).build())
                 .token(queue.token())
                 .status(queue.status())
                 .createdAt(queue.createdAt())

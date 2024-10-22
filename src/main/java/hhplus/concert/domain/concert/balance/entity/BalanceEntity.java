@@ -1,4 +1,4 @@
-package hhplus.concert.infra.balance.entity;
+package hhplus.concert.domain.concert.balance.entity;
 
 
 import hhplus.concert.domain.balance.Balance;
@@ -6,7 +6,6 @@ import hhplus.concert.infra.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 

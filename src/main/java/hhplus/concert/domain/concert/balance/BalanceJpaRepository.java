@@ -1,9 +1,7 @@
-package hhplus.concert.infra.balance;
+package hhplus.concert.domain.concert.balance;
 
-import hhplus.concert.infra.balance.entity.BalanceEntity;
-import jakarta.persistence.LockModeType;
+import hhplus.concert.domain.concert.balance.entity.BalanceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Lock;
 
 import java.util.Optional;
 
