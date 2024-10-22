@@ -35,7 +35,7 @@ public class ConcertRepositoryImpl implements ConcertRepository {
     @Override
     public List<ConcertSchedule> findConcertSchedules(Long concertId) {
         LocalDateTime now = LocalDateTime.now();
-        return concertScheduleJpsRepository.findByConcertIdAndReservationAtBeforeAndDeadlineAfter(concertId, now, now)
+        return concertScheduleJpsRepository.findByConcertIdAndReservationAtBeforeAndDeadLineAfter(concertId, now, now)
                 .stream()
                 .map(ConcertScheduleEntity::of)
                 .toList();

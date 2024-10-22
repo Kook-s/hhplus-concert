@@ -26,7 +26,7 @@ public record Balance(
                 .build();
     }
 
-    public Balance useeBalance(int useAmount) {
+    public Balance useBalance(int useAmount) {
         if(this.amount < useAmount) {
             throw new CustomException(ErrorCode.PAYMENT_FAILED_AMOUNT);
         }

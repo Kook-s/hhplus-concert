@@ -26,7 +26,8 @@ public class SeatEntity {
     @Column(name="SEAT_NO")
     private int seatNo;
 
-    @Column(name="STATUS")
+    @Column(name="STATUS", nullable = false)
+    @Enumerated(value = EnumType.STRING)
     private SeatStatus status;
 
     @Column(name = "RESERVATION_AT")

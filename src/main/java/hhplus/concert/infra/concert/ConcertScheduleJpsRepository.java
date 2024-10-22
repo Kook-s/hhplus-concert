@@ -7,5 +7,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ConcertScheduleJpsRepository extends JpaRepository<ConcertScheduleEntity, Long> {
-    List<ConcertScheduleEntity> findByConcertIdAndReservationAtBeforeAndDeadlineAfter(Long concertId, LocalDateTime now, LocalDateTime now1);
+    List<ConcertScheduleEntity> findByConcertIdAndReservationAtBeforeAndDeadLineAfter(Long concertId, LocalDateTime now, LocalDateTime now1);
 }

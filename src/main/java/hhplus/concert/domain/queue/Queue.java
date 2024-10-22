@@ -51,11 +51,29 @@ public record Queue(
 
     }
 
+    public void validateToken() {
+        // 토큰이 대기 상태이거나 만료되었을 경우
+        if (expiredAt == null || expiredAt.isBefore(LocalDateTime.now())) {
+            throw new CustomException(ErrorCode.UNAUTHORIZED);
+        }
+    }
+
     public boolean checkStatus() {
         if (status.equals(QueueStatus.EXPIRED)) {
             throw new CustomException(ErrorCode.UNAUTHORIZED);
         }
 
         return status.equals(QueueStatus.ACTIVE);
+    }
+
+    public Queue activate() {
+        return Queue.builder()
+                .id(id)
+                .userId(userId)
+                .token(token)
+                .status(QueueStatus.ACTIVE)
+                .enteredAt(LocalDateTime.now())
+                .expiredAt(LocalDateTime.now().plusMinutes(10))
+                .build();
     }
 }

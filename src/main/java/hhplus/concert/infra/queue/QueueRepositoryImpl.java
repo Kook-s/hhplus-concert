@@ -18,50 +18,50 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QueueRepositoryImpl implements QueueRepository {
 
-    private final QueuJpaRepository queuJpaRepository;
+    private final QueueJpaRepository queueJpaRepository;
 
     @Override
     public Queue findQueue(Long userId) {
-        return queuJpaRepository.findByUserIdAndStatusNot(userId, QueueStatus.EXPIRED)
+        return queueJpaRepository.findByUserIdAndStatusNot(userId, QueueStatus.EXPIRED)
                 .map(QueueEntity::of)
                 .orElse(null);
     }
 
     @Override
     public Queue findQueue(String token) {
-        return queuJpaRepository.findByToken(token)
+        return queueJpaRepository.findByToken(token)
                 .map(QueueEntity::of)
                 .orElseThrow(() -> new CustomException(ErrorCode.TOKEN_NOT_FOUND));
     }
 
     @Override
     public Long findActiveCount() {
-        return queuJpaRepository.countByStatus(QueueStatus.ACTIVE);
+        return queueJpaRepository.countByStatus(QueueStatus.ACTIVE);
     }
 
     @Override
     public Long findCurrentRank() {
-        return queuJpaRepository.countByStatus(QueueStatus.WAITING);
+        return queueJpaRepository.countByStatus(QueueStatus.WAITING);
     }
 
     @Override
     public Long findUserRank(Long queueId) {
-        return queuJpaRepository.countByIdLessThanAndStatus(queueId, QueueStatus.WAITING) + 1;
+        return queueJpaRepository.countByIdLessThanAndStatus(queueId, QueueStatus.WAITING) + 1;
     }
 
     @Override
     public Queue save(Queue token) {
-        return QueueEntity.of(queuJpaRepository.save(new QueueEntity().from(token)));
+        return QueueEntity.of(queueJpaRepository.save(new QueueEntity().from(token)));
     }
 
     @Override
     public void expireToken(Queue token) {
-        queuJpaRepository.updateStatusAndExpiredAtById(token.id(), token.status(), token.expiredAt());
+        queueJpaRepository.updateStatusAndExpiredAtById(token.id(), token.status(), token.expiredAt());
     }
 
     @Override
     public List<Queue> findExpiredTokens(LocalDateTime now, QueueStatus queueStatus) {
-        return queuJpaRepository.findExpiredTokens(now, queueStatus)
+        return queueJpaRepository.findExpiredTokens(now, queueStatus)
                 .stream()
                 .map(QueueEntity::of)
                 .toList();
@@ -70,7 +70,7 @@ public class QueueRepositoryImpl implements QueueRepository {
     @Override
     public List<Queue> findWaitingTokens(long limit) {
         Pageable pageable = PageRequest.of(0, (int) limit);
-        return queuJpaRepository.findWaitingTokens(pageable).getContent()
+        return queueJpaRepository.findWaitingTokens(pageable).getContent()
                 .stream()
                 .map(QueueEntity::of)
                 .toList();

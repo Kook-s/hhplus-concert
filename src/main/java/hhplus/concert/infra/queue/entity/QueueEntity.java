@@ -23,7 +23,7 @@ public class QueueEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
-    private UserEntity userId;
+    private UserEntity user;
 
     @Column(name = "TOKEN")
     private String token;
@@ -44,7 +44,7 @@ public class QueueEntity {
     public static Queue of(QueueEntity entity) {
         return Queue.builder()
                 .id(entity.getId())
-                .userId(entity.getUserId().getId())
+                .userId(entity.getUser().getId())
                 .token(entity.getToken())
                 .status(entity.getStatus())
                 .createdAt(entity.getCreatedAt())
@@ -53,9 +53,9 @@ public class QueueEntity {
                 .build();
     }
 
-    public static QueueEntity from(Queue queue) {
+    public QueueEntity from(Queue queue) {
         return QueueEntity.builder()
-                .userId(UserEntity.builder().id(queue.userId()).build())
+                .user(UserEntity.builder().id(queue.userId()).build())
                 .token(queue.token())
                 .status(queue.status())
                 .createdAt(queue.createdAt())

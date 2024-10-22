@@ -60,7 +60,7 @@ public class QueueService {
 
     public Queue validateToken(String token) {
         Queue queue = queueRepository.findQueue(token);
-        queue.checkStatus();
+        queue.validateToken();
         return queue;
     }
 }

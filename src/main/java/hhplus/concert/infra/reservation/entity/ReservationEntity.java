@@ -28,22 +28,18 @@ public class ReservationEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONCERT_ID")
-    @Column(name = "CONCERT")
     private ConcertEntity concert;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONCERT_SCHEDULE_ID")
-    @Column(name = "SCHEDULE")
     private ConcertScheduleEntity schedule;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SEAT_ID")
-    @Column(name = "SEAT")
     private SeatEntity seat;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
-    @Column(name = "USER")
     private UserEntity user;
 
     @Column(name = "STATUS")

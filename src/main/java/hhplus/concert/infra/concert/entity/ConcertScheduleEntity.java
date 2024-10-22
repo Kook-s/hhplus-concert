@@ -25,7 +25,7 @@ public class ConcertScheduleEntity {
     @Column(name="RESERVATION_AT")
     private LocalDateTime reservationAt;
 
-    @Column(name="DEAD_LINE")
+    @Column(name="DEADLINE")
     private LocalDateTime deadLine;
 
     @Column(name="CONCERT_AT")

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public interface QueuJpaRepository extends JpaRepository<QueueEntity, Long> {
+public interface QueueJpaRepository extends JpaRepository<QueueEntity, Long> {
     Optional<QueueEntity> findByUserIdAndStatusNot(Long userId, QueueStatus status);
     Optional<QueueEntity> findByToken(String Token);
     Long countByIdLessThanAndStatus(Long id, QueueStatus statuses);
