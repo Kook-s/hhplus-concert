@@ -42,6 +42,17 @@ public record Reservation(
         }
     }
 
+    public Reservation changeStatus(ReservationStatus status) {
+        return Reservation.builder()
+                .id(id)
+                .concertId(concertId)
+                .scheduleId(scheduleId)
+                .seatId(seatId)
+                .userId(userId)
+                .status(status)
+                .build();
+    }
+
     public Reservation changeStatus() {
         return Reservation.builder()
                 .id(id)

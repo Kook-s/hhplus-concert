@@ -4,11 +4,15 @@ import hhplus.concert.domain.concert.Concert;
 import hhplus.concert.domain.concert.ConcertRepository;
 import hhplus.concert.domain.concert.ConcertSchedule;
 import hhplus.concert.domain.concert.Seat;
+import hhplus.concert.domain.reservation.Reservation;
 import hhplus.concert.infra.concert.entity.ConcertEntity;
 import hhplus.concert.infra.concert.entity.ConcertScheduleEntity;
 import hhplus.concert.infra.concert.entity.SeatEntity;
+import hhplus.concert.infra.reservation.ReservationJpaRepository;
+import hhplus.concert.infra.reservation.entity.ReservationEntity;
 import hhplus.concert.support.exception.CustomException;
 import hhplus.concert.support.exception.ErrorCode;
+import hhplus.concert.support.type.ReservationStatus;
 import hhplus.concert.support.type.SeatStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -24,6 +28,7 @@ public class ConcertRepositoryImpl implements ConcertRepository {
     private final ConcertJpaRepository concertJpaRepository;
     private final ConcertScheduleJpsRepository concertScheduleJpsRepository;
     private final SeatJpaRepository seatJpaRepository;
+    private final ReservationJpaRepository reservationJpaRepository;
 
     @Override
     public List<Concert> findConcerts() {
@@ -82,5 +87,12 @@ public class ConcertRepositoryImpl implements ConcertRepository {
         return seatJpaRepository.findById(seatId)
                 .map(SeatEntity::of)
                 .orElseThrow(() -> new CustomException(ErrorCode.SEAT_NOT_FOUND));
+    }
+
+    @Override
+    public List<Reservation> findExpiredReservation(ReservationStatus reservationStatus, LocalDateTime localDateTime) {
+        return reservationJpaRepository.findByStatusAndReservationAtBefore(reservationStatus, localDateTime).stream()
+                .map(ReservationEntity::of)
+                .toList();
     }
 }
