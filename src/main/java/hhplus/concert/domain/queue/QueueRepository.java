@@ -18,4 +18,6 @@ public interface QueueRepository {
     List<Queue> findExpiredTokens(LocalDateTime now, QueueStatus queueStatus);
 
     List<Queue> findWaitingTokens(long neededTokens);
+
+    long findByStatus(QueueStatus queueStatus);
 }
