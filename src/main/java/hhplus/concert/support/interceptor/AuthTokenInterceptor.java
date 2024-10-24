@@ -27,7 +27,6 @@ public class AuthTokenInterceptor implements HandlerInterceptor {
         }
 
         try {
-
             queueService.validateToken(token);
             return HandlerInterceptor.super.preHandle(request, response, handler);
 
